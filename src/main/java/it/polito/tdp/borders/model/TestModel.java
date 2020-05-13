@@ -2,6 +2,7 @@ package it.polito.tdp.borders.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class TestModel {
 
@@ -38,14 +39,19 @@ public class TestModel {
 		}
 		*/
 		
-		//Country partenza = new Country(2, "USA", "United States of America");
-		Country partenza = new Country(220, "FRN", "France");
+		Country partenza = new Country(2, "USA", "United States of America");
+		//Country partenza = new Country(220, "FRN", "France");
 		//List<Country> vicini = model.trovaVicini(partenza);
 		//for(Country c : vicini)
 		//	System.out.println(c+"\n");
 		
+		/*
 		List<Country> vicini = model.trovaVicini2(partenza);
 		for(Country c : vicini)
+			System.out.println(c+"\n");
+		*/
+		Set<Country> prova = model.trovaVicini2(partenza);
+		for(Country c : prova)
 			System.out.println(c+"\n");
 	}
 

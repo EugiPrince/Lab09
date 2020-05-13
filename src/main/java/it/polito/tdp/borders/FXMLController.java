@@ -66,9 +66,11 @@ public class FXMLController {
     	}
     	
     	List<Country> vicini = this.model.trovaVicini(partenza);
+    	
     	this.txtResult.appendText("Gli stati vicini a "+partenza.getStateNme()+" sono:\n");
     	for(Country c : vicini)
     		this.txtResult.appendText(c+"\n");
+    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

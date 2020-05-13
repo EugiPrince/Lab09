@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.jgrapht.Graphs;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
@@ -114,7 +115,6 @@ public class Model {
 			
 			@Override
 			public void edgeTraversed(EdgeTraversalEvent<DefaultEdge> e) {
-				// TODO Auto-generated method stub
 				DefaultEdge edge = e.getEdge(); //Arco attraversato
 				Country c1 = graph.getEdgeSource(edge);
 				Country c2 = graph.getEdgeTarget(edge);
@@ -147,19 +147,25 @@ public class Model {
 		return vicini;
 	}
 	
-	//Non e' la cosa richiesta
-	public List<Country> trovaVicini2(Country partenza) {
+	//Non e' la cosa richiesta, restituisce solo i paesi confinanti
+	public List<Country> confinanti(Country partenza) {
 		List<Country> vicini = new ArrayList<>();
 		vicini = Graphs.neighborListOf(this.graph, partenza);
 		return vicini;
 	}
 	
 	//Metodo iterativo da implementare, in che modo?
-	public List<Country> trovaVicini3(Country partenza) {
-		List<Country> vicini = new ArrayList<>();
+	public Set<Country> trovaVicini2(Country partenza) {
+		//List<Country> vicini = new ArrayList<>();
+		//List<Country> daVisitare = new ArrayList<>();
 		
-		ci.connectedSetOf(partenza);
+		Set<Country> daVisitare = ci.connectedSetOf(partenza);
 		
-		return vicini;
+		//daVisitare.add(partenza);
+		//daVisitare.addAll(Graphs.neighborListOf(this.graph, partenza));
+		
+		//return vicini;
+		return daVisitare;
 	}
+	
 }
