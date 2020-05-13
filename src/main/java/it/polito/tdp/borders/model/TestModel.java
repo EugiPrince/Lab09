@@ -24,8 +24,8 @@ public class TestModel {
 //		for (Country country : stats.keySet())
 //			System.out.format("%s %d\n", country, stats.get(country));		
 		
-		System.out.println("Grafo relativo al 1980.\n");
-		model.creaGrafo(1980);
+		System.out.println("Grafo relativo al 2000.\n");
+		model.creaGrafo(2000);
 		System.out.println("Numero vertici: "+model.numVertici()+" Numero archi: "+model.numArchi()+"\n");
 		//System.out.println(model.boh());
 		System.out.println("Elenco dei paesi:\n"+model.elencoStati());
@@ -40,19 +40,24 @@ public class TestModel {
 		*/
 		
 		Country partenza = new Country(2, "USA", "United States of America");
+		//Country partenza = new Country(20, "CAN", "Canada");
+		//Country partenza = new Country(135, "PER", "Peru");
 		//Country partenza = new Country(220, "FRN", "France");
-		//List<Country> vicini = model.trovaVicini(partenza);
-		//for(Country c : vicini)
-		//	System.out.println(c+"\n");
+		List<Country> vicini = model.trovaVicini(partenza);
+		for(Country c : vicini)
+			System.out.println(c+"\n");
+		System.out.println(vicini.size());
 		
 		/*
 		List<Country> vicini = model.trovaVicini2(partenza);
 		for(Country c : vicini)
 			System.out.println(c+"\n");
 		*/
+		
 		Set<Country> prova = model.trovaVicini2(partenza);
 		for(Country c : prova)
 			System.out.println(c+"\n");
+		System.out.println(prova.size());
 	}
 
 }

@@ -26,8 +26,8 @@ public class Model {
 	private SimpleGraph<Country, DefaultEdge> graph;
 	private Map<Integer, Country> idMap;
 	private ConnectivityInspector<Country, DefaultEdge> ci;
-	private Map<Country, Country> visita = new HashMap<>();
-
+	private Map<Country, Country> visita;
+	
 	public Model() {
 		dao = new BordersDAO();
 		this.idMap = new HashMap<>();
@@ -97,10 +97,13 @@ public class Model {
 	/**
 	 * Trova tutti i paesi raggiungibili partendo da quello indicato come partenza. Metodo che utilizza il
 	 * BreadthFirstIterator e poi il TrasversalListener
+	 * ALBERTO MONGE ROFFARELLO HA SPIEGATO CHE IN REALTA' E' INUTILE FARE TUTTO CIO', PERCHE' NON SERVE IN QUEST
+	 * CASO TENERE TRACCIA DEL "PERCORSO" CON CUI I PAESI SONO SCOPERTI
 	 * @param partenza
 	 * @return
 	 */
 	public List<Country> trovaVicini(Country partenza) {
+		visita = new HashMap<>();
 		visita.put(partenza, null);
 		List<Country> vicini = new ArrayList<>();
 		
@@ -154,17 +157,13 @@ public class Model {
 		return vicini;
 	}
 	
-	//Metodo iterativo da implementare, in che modo?
+	/**
+	 * Credo sia super efficiente e fa quello che deve.. che senso ha?
+	 * @param partenza
+	 * @return
+	 */
 	public Set<Country> trovaVicini2(Country partenza) {
-		//List<Country> vicini = new ArrayList<>();
-		//List<Country> daVisitare = new ArrayList<>();
-		
 		Set<Country> daVisitare = ci.connectedSetOf(partenza);
-		
-		//daVisitare.add(partenza);
-		//daVisitare.addAll(Graphs.neighborListOf(this.graph, partenza));
-		
-		//return vicini;
 		return daVisitare;
 	}
 	
