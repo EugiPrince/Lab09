@@ -45,10 +45,12 @@ public class Model {
 		
 		List<Border> borders = this.dao.getCountryPairs(anno);
 		
-		for(Border b : borders) {
+		/*for(Border b : borders) {
 			//Aggiungo solo i vertici che mi servono, prendi oggetto Country dalla mappa a cui corrisponde il codice in B
 			this.graph.addVertex(idMap.get(b.getC1()));
-		}
+		}*/
+		Graphs.addAllVertices(this.graph, idMap.values());
+		
 		for(Border b : borders) {
 			this.graph.addEdge(idMap.get(b.getC1()), idMap.get(b.getC2()));
 		}
